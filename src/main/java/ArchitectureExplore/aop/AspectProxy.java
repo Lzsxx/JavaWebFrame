@@ -36,8 +36,10 @@ public abstract class AspectProxy implements MyProxy {
             logger.error("proxy failure", e);
             error(cls, method, params, e);
             throw e;
+        }finally {
+            end();
         }
-        return null;
+        return result;
     }
 
     public void begin() {
