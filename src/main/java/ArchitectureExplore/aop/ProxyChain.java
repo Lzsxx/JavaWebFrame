@@ -48,8 +48,7 @@ public class ProxyChain {
     public Object doProxyChain() throws Throwable {
         Object methodResult;
         if (proxyIndex < proxyList.size()) {
-            methodResult = proxyList.get(proxyIndex).doProxy(this);
-            proxyIndex++;
+            methodResult = proxyList.get(proxyIndex++).doProxy(this);
         } else {
             methodResult = methodProxy.invokeSuper(targetObject, methodParams);
         }
