@@ -19,9 +19,9 @@ public class AopHelper {
     static {
         try {
             // proxyMap中，key为切面，value为被这个切面选中的类
-            Map<Class<?>, Set<Class<?>>> proxyMap = createProxyMap();
+            Map<Class<?>, Set<Class<?>>> aspectMap = createProxyMap();
             // targetMap中,key为每一个被切面选中的类，value为选中这个类的所有切面类的实例的List
-            Map<Class<?>, List<MyProxy>> targetMap = createTargetMap(proxyMap);
+            Map<Class<?>, List<MyProxy>> targetMap = createTargetMap(aspectMap);
 
             // 为每一个被切面选中的类创建代理对象，代理对象的callBack里设置好了调用链，一旦触发，就会先走完调用链再执行真正的方法
             for (Map.Entry<Class<?>, List<MyProxy>> targetEntry : targetMap.entrySet()) {
